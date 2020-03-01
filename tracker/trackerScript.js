@@ -1,7 +1,7 @@
 "use strict";
 let monthBudget = +prompt("Ваш бюджет на месяц?", "");
 let date = prompt("Введите дату в формате YYYY-MM-DD", "");
-let questionsNumber = 2;
+const questionsNumber = 2;
 const errorMessage = "Данные не могут быть пустыми!";
 
 
