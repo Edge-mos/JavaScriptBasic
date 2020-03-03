@@ -29,9 +29,9 @@ for (let index = 0; index < questionsNumber;) {
     } else {
 
         alert(mandatoryItem == null || mandatoryItem === "" ?
-            errorMessage + " " + "Ошибка в статье расхода, Вы ввели: " + mandatoryItem.toString + repeatMessage :
+            errorMessage + " " + "Ошибка в статье расхода, Вы ввели: " + mandatoryItem + repeatMessage :
             mandatoryCost == null || mandatoryCost === "" || mandatoryCost == 0 ?
-            errorMessage + " " + "Ошибка в стоимости, введённое значение: " + mandatoryCost.toString + repeatMessage : "Непредвиденная ошибка");
+            errorMessage + " " + "Ошибка в стоимости, введённое значение: " + mandatoryCost + repeatMessage : "Непредвиденная ошибка");
 
         // if ((mandatoryItem == null || mandatoryItem === "")) {
         //     alert(errorMessage + " " + "Ошибка в статье расхода, Вы ввели: " + mandatoryItem.toString + repeatMessage);
