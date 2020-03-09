@@ -25,11 +25,11 @@ for (let key in options) {
     console.log("Property: " + key + " Value: " + options[key]);
 }
 
-for (const col in options.colors) {   // цыкл for in выводит ключи массива
+for (const col in options.colors) { // цыкл for in выводит ключи массива
     console.log(col);
 }
 
-for (const key in options.colors) {   // выводим значения вложенного объекта
+for (const key in options.colors) { // выводим значения вложенного объекта
     console.log(options.colors[key]);
 }
 
@@ -38,19 +38,46 @@ for (const key in options.colors) {
     console.log("Prop:" + key + " Val:" + options.colors[key]);
 }
 
-console.log(Object.keys(options).length);  // количество ключей в объекте
+console.log(Object.keys(options).length); // количество ключей в объекте
 
 Object.keys(options).forEach(val => console.log(options[val]));
 
+console.log("\n for in object");
 
-for (const key in options) {                
-    if (options[key] == typeof Object) {
-        console.log("OBJ!");
+
+let objectInfo = {
+    buffer: [],
+    tab: "  ",
+
+    infoAppend: function(val) {
+        this.buffer.push(val.toString().concat("\n"));
+    },
+
+    objReader: function(obj) {
+        for (const key in obj) {
+            if (typeof (options[key]) == "object") {
+
+                let inner = options[key];
+                this.infoAppend(key.concat(":").concat(" {"));
+
+                let innerKeys = Object.keys(inner);
+                for (const innerKey of innerKeys) {
+                    this.infoAppend(this.tab +  innerKey + ": " + inner[innerKey]);
+                }
+                this.infoAppend("}");
+                
+            } else {
+                this.infoAppend(key + ": " + options[key]);
+            }
+        }
+    },
+
+    toString: function() {
+        let result = "";
+        this.buffer.forEach(val => result += val.toString().replace(",", ""));
+        return result;
     }
-    console.log("Prop!:" + key + " Val:" + options[key]);
+};
 
-}
-
-
-
-
+objectInfo.objReader(options);
+console.log(objectInfo.toString());
