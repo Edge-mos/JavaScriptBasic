@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+
+    <div class="jskmb-calculator">
+        <div class="operations-block">
+            <button id="btnPlus">+</button>
+            <button id="btnMinus">-</button>
+            <button id="btnMulty">*</button>
+            <button id="btnDivide">/</button>  
+        </div>
+
+        <div class="separator"><hr></div>
+        
+
+        <div class="inputs-block">
+            <div class="input-block">
+                <label>Number 1</label>
+                <input id="first-num" type="number">
+            </div>
+
+            <div class="operation-calc"></div>
+
+            <div class="input-block">
+                <label>Number 2</label>
+                <input id="second-num" type="number">
+            </div>
+        </div>
+
+        <div class="separator"><hr></div>
+
+        <div class="result-block">
+            <label>Result</label>
+            <input id="calc-result" type="number">
+        </div>
+
+        <div class="clear-block">
+            <button id="clear-btn" class="default">Clear</button>
+        </div>
+
+    </div>
+
+    <script src="calculatorScript.js"></script>
+    
+    
+</body>
+</html>
