@@ -1,0 +1,12 @@
+
+.itk-slider {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#current-img {
+    width: inherit;
+    height: 331px;
+    margin: 0px;
+}
