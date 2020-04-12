@@ -1,4 +1,8 @@
 'use strict';
+//-----------------------------------------------------------------------------------------------
+
+
+//-----------------------------------------------------------------------------------------------
 
 let buttons = document.querySelectorAll('.itk-slider .control-slider button');
 let currentImg = document.getElementById('current-img');
@@ -22,7 +26,7 @@ function onButtonClick(event) {
     let fromElement = event.currentTarget;
 
     currentUrlIndex = fromElement.id.includes('next') ? ++currentUrlIndex : --currentUrlIndex;
-    
+
     if (currentUrlIndex > imagesUrls.length - 1) {
         currentUrlIndex = 0;
     }
@@ -30,12 +34,12 @@ function onButtonClick(event) {
     if (currentUrlIndex < 0) {
         currentUrlIndex = imagesUrls.length - 1;
     }
-    
+
     currentImg.src = imagesUrls[currentUrlIndex];
     sliderStat();
 }
 
-function sliderStat(){
+function sliderStat() {
     if (imagesUrls.length != 0) {
         statisticLabel.innerHTML = `${currentUrlIndex + 1} of ${imagesUrls.length}`;
     }
@@ -44,4 +48,3 @@ function sliderStat(){
 sliderInitial();
 buttons.forEach(button => button.addEventListener('click', onButtonClick));
 sliderStat();
-
