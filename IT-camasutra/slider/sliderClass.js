@@ -1,15 +1,13 @@
 'use strict';
 
-let slider = {
-    imagesUrls: [],
-    buttons: document.querySelectorAll('.itk-slider .control-slider button'),
-    currentUrlIndex: 0,
-    currentImg: document.getElementById('current-img'),
-    statisticLabel: document.querySelector('.itk-slider .counter-slider .counter-label'),
+function Slider(imagesUrls, pathTobuttons, imgId, pathToStatisticLbl) {
+    this.imagesUrls = imagesUrls;
+    this.buttons = document.querySelectorAll(pathTobuttons);
+    this.currentUrlIndex = 0;
+    this.currentImg = document.getElementById(imgId);
+    this.statisticLabel = document.querySelector(pathToStatisticLbl);
 
-
-
-    start: function() {
+    this.start = function() {
 
         //!!------------------------
         let that = this;
@@ -18,19 +16,11 @@ let slider = {
         }));
         //!!------------------------
 
-        this.imagesUrls = [
-            'https://i.pinimg.com/originals/36/05/4a/36054a4a06b9911358f7f46025c1b1e1.jpg',
-            'https://i.pinimg.com/originals/5d/65/43/5d6543af55eaa710a0380903e0193cff.jpg',
-            'https://digitalsynopsis.com/wp-content/uploads/2014/06/supercar-wallpapers-bugatti-1.jpg',
-            'https://images.wallpaperscraft.ru/image/ferrari_krasnyj_avto_sport_95424_1920x1080.jpg',
-            'https://car-pictures-download.com/wp-content/uploads/2019/03/Lamborghini-Huracan-hd-car-wallpapers-1920x1080.jpg'
-        ];
-
         this.sliderStat();  
         this.currentImg.src = this.imagesUrls[this.currentUrlIndex];
-    },
+    };
 
-    onButtonClick: function (event) {
+    this.onButtonClick = function (event) {
         let fromElement = event.currentTarget;
 
         this.currentUrlIndex = fromElement.id.includes('next') ? ++this.currentUrlIndex : --this.currentUrlIndex;
@@ -45,11 +35,11 @@ let slider = {
 
         this.currentImg.src = this.imagesUrls[this.currentUrlIndex];
         this.sliderStat();  
-    },
+    };
 
-    sliderStat : function() {
+    this.sliderStat  = function() {
         if (this.imagesUrls.length != 0) {
             this.statisticLabel.innerHTML = `${this.currentUrlIndex + 1} of ${this.imagesUrls.length}`;
         }
-    }
-};
+    };
+}

@@ -119,6 +119,7 @@ a:active {
     opacity: .3
 }
 
+
 .data .count-budget-btn,
 .data .expenses-item-btn,
 .data .optionalexpenses-btn {
@@ -128,13 +129,20 @@ a:active {
     margin: 0 auto;
     border: none;
     border-radius: 2.5px;
-    background-image: linear-gradient(336deg, #ffbd75, #ff964b), linear-gradient(#fff, #fff);
+    background-image: linear-gradient(336deg, #ffbd75, #ff964b), linear-gradient(#fff, #fff);  
     box-shadow: 0 2.5px 10px 0 rgba(1, 0, 42, .1);
     color: #fff;
     font-weight: 100;
     font-size: 12px;
     cursor: pointer
 }
+
+.data .btn-disable {
+    border-radius: 0px;
+    background-image: none;
+    color: black;
+}
+
 
 .data .optionalexpenses-item {
     width: calc((100%/3) - 4px)
@@ -270,3 +278,4 @@ a:active {
     height: 30px;
     margin-left: 25px
 }
+
