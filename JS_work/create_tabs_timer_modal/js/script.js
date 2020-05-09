@@ -112,7 +112,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
 
-
     // элементы страницы, сгруппированны в отдельный объект
     let timerElementsObj = getTimerElementsFromDoc('.timer-numbers');
 
@@ -138,4 +137,36 @@ window.addEventListener('DOMContentLoaded', () => {
             clearInterval(timeInterval);
         }
     }
+
+    //-------------------------модальное окно--------------------------------------
+
+    //получаем элементы
+
+    let buttonMore = document.querySelector('.more');
+    let overlayDiv = document.querySelector('.overlay');
+    let closeEl = document.querySelector('.popup-close');
+
+    buttonMore.addEventListener('click', setDisplaySettings.bind(buttonMore));
+
+    closeEl.addEventListener('click', setDisplaySettings.bind(buttonMore));
+
+    function setDisplaySettings(event) {
+        let classList = event.currentTarget.classList;
+
+        overlayDiv.style.display = classList.contains('more') ? 'block' : 'none';
+        if (classList.contains('more')) {
+            this.classList.add('more-splash');
+        } else {
+            this.classList.remove('more-splash');
+        }
+        setOverflow.call(document, event);
+    }
+
+    function setOverflow(event) {
+        this.body.style.overflow =
+            event.currentTarget.classList.contains('more') ? 'hidden' : 'scroll';
+    }
+
+    //---------Привязать модальное окно к кнопкам “Узнать подробнее” в табах. ---------
+
 });
