@@ -86,7 +86,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         //root
         let timerNumbersDiv = document.querySelector(timerDiv);
-        //secons
+        //seconds
         let secondsEl = timerNumbersDiv.querySelector('.seconds');
         //minutes
         let minutesEl = timerNumbersDiv.querySelector('.minutes');
@@ -142,31 +142,44 @@ window.addEventListener('DOMContentLoaded', () => {
 
     //получаем элементы
 
-    let buttonMore = document.querySelector('.more');
-    let overlayDiv = document.querySelector('.overlay');
-    let closeEl = document.querySelector('.popup-close');
+    let buttonMore = document.querySelector('.more');          // кнопка
+    let overlayDiv = document.querySelector('.overlay');       // модальное окно
+    let closeEl = document.querySelector('.popup-close');      // див с Х
 
-    buttonMore.addEventListener('click', setDisplaySettings.bind(buttonMore));
+    buttonMore.addEventListener('click', setDisplaySettings.bind(buttonMore, 'more'));
 
-    closeEl.addEventListener('click', setDisplaySettings.bind(buttonMore));
+    closeEl.addEventListener('click', setDisplaySettings.bind(buttonMore, 'more'));
 
-    function setDisplaySettings(event) {
+    function setDisplaySettings(triggerClass, event) {
         let classList = event.currentTarget.classList;
 
-        overlayDiv.style.display = classList.contains('more') ? 'block' : 'none';
-        if (classList.contains('more')) {
+        overlayDiv.style.display = classList.contains(triggerClass) ? 'block' : 'none';
+        if (classList.contains(triggerClass)) {
             this.classList.add('more-splash');
         } else {
             this.classList.remove('more-splash');
         }
-        setOverflow.call(document, event);
+        setOverflow.call(document, triggerClass, event);
     }
 
-    function setOverflow(event) {
+    function setOverflow(triggerClass, event) {
         this.body.style.overflow =
-            event.currentTarget.classList.contains('more') ? 'hidden' : 'scroll';
+            event.target.classList.contains(triggerClass) ? 'hidden' : 'scroll';
     }
 
     //---------Привязать модальное окно к кнопкам “Узнать подробнее” в табах. ---------
+
+
+    // получаем родительский элемент
+    let infoDiv = document.querySelector('.info');
+
+    infoDiv.addEventListener('click', function (event) {
+        let target = event.target;
+
+        if (target && target.classList.contains('description-btn')) {
+            overlayDiv.style.display = 'block';
+            setOverflow.call(document, 'description-btn', event);
+        }
+    });
 
 });
